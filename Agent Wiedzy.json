@@ -1,0 +1,528 @@
+{
+  "name": "Agent Wiedzy",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Chat Flow",
+        "height": 688,
+        "width": 712,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [832, 240],
+      "typeVersion": 1,
+      "id": "f6959643-2ba2-4f94-a3cf-448f8cbaba00",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Przykładowe pytania do supportu\n\nInformacje podstawowe\n\nIle kosztuje SmartHome Pro Hub?\nJaki jest kod produktu?\nJaki jest model urządzenia?\nCzy produkt jest dostępny w magazynie?\nJaka jest gwarancja na ten hub?\nJakie są wymiary urządzenia?\nIle waży hub?\nZ jakiego materiału jest wykonana obudowa?\nCo znajduje się w zestawie?\n\nSpecyfikacja techniczna\n\nJakie protokoły łączności obsługuje hub?\nCzy hub ma Wi-Fi 6?\nCzy ma Bluetooth?\nCzy obsługuje Zigbee?\nCzy ma port Ethernet?\nIle urządzeń można podłączyć do huba?\nJaki procesor ma urządzenie?\nIle ma pamięci RAM?\nIle ma pamięci wewnętrznej?\nJaki jest czas odpowiedzi systemu?\nJaki jest pobór mocy urządzenia?\nJak długo działa na baterii awaryjnej?\nJaki zasilacz jest w zestawie?\n\nInstalacja i konfiguracja\n\nIle czasu zajmuje instalacja?\nJakie są wymagania systemowe?\nJak zainstalować hub?\nCzy potrzebuję kabla Ethernet?\nGdzie pobrać aplikację SmartHome Pro?\nJakie telefony obsługuje aplikacja?\nCzy potrzebuję konta użytkownika?\nJak długo trwa proces autodiscovery?\nCo to jest kod QR i gdzie go znajdę?\n\nKompatybilność\n\nCzy hub działa z żarówkami Philips Hue?\nJakie urządzenia Xiaomi są obsługiwane?\nCzy mogę podłączyć urządzenia IKEA TRÅDFRI?\nCzy hub współpracuje z Alexą?\nCzy działa z Google Assistant?\nCzy obsługuje Apple HomeKit?\nKtóre urządzenia Fibaro działają?\nCzy obsługuje urządzenia TP-Link?\nJakie protokoły są obsługiwane?\nJakie kategorie urządzeń można podłączyć?\n\n\n\n",
+        "height": 1080,
+        "width": 464
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [256, 960],
+      "id": "670e8fc8-e94f-4439-85ba-2cb37b74bb8d",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "Aplikacja mobilna\n\nIle miejsca zajmuje aplikacja?\nCzy aplikacja działa offline?\nCzy mogę otrzymywać powiadomienia?\nJak aktualizuje się aplikacja?\nCzy aplikacja jest w języku polskim?\nJakie funkcje ma dashboard?\nCzy mogę udostępnić dostęp innym?\nJakie są wymagania dla iOS?\nJakie są wymagania dla Androida?\nJakie funkcje ma aplikacja?\n\nRozwiązywanie problemów\n\nCo oznacza kod błędu E001?\nCo oznacza kod błędu E002?\nCo oznacza kod błędu E003?\nCo oznacza kod błędu E004?\nHub nie łączy się z internetem - co robić?\nNie widzę mojego urządzenia w aplikacji\nAplikacja działa wolno - jak to naprawić?\nMoje scenariusze nie działają\nCo robić gdy urządzenie nie jest wykrywane?\n\nWsparcie techniczne\n\nJaki jest numer telefonu do wsparcia?\nKiedy działa hotline?\nCzy jest dostępny chat online?\nNa jaki email mogę napisać?\nIle czasu czekać na odpowiedź?\nCzy wsparcie jest w języku polskim?\nGdzie znajdę forum użytkowników?\nJakie języki obsługuje wsparcie?\nJaki jest czas odpowiedzi na email?\nGdzie jest dostępny live chat?\n\nAktualizacje\n\nJak często są aktualizacje?\nCzy aktualizacje są automatyczne?\nJak wyłączyć auto-update?\nGdzie sprawdzić changelog?\nCzy mogę wrócić do poprzedniej wersji?\nJakie nowe funkcje są planowane?\nKiedy będzie obsługa fotowoltaiki?\nKiedy będzie AI automatyzacja?\nKiedy będzie obsługa Matter 1.2?\nKiedy będzie wsparcie dla kamer IP?\n\n",
+        "height": 1080,
+        "width": 424
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [720, 960],
+      "id": "9325144a-469a-4dd0-abaa-9733860a374b",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "Funkcje i możliwości\n\nJak tworzyć automatyzacje?\nCzy mogę ustawić scenariusze czasowe?\nJak działa geolokalizacja?\nCzy hub ma sterowanie głosowe?\nJakie funkcje bezpieczeństwa ma urządzenie?\nCzy dane są szyfrowane?\nCzy hub działa bez internetu?\nJak udostępnić dostęp rodzinie?\nCzy mogę tworzyć warunki logiczne?\nJak działają triggery środowiskowe?\nCzy mogę sterować głosem po polsku?\nJakie asystenty głosowe są obsługiwane?\n\nGwarancja i serwis\n\nJak długa jest gwarancja?\nCo pokrywa gwarancja?\nCzy gwarancja obejmuje zalanie?\nIle kosztuje serwis pogwarancyjny?\nJak długo trwa naprawa?\nCzy transport w serwisie jest darmowy?\nIle kosztuje diagnoza?\nCo nie jest objęte gwarancją?\nJak przebiega wymiana na nowy egzemplarz?\n\nCertyfikaty i zgodność\n\nJakie certyfikaty ma produkt?\nCzy hub ma certyfikat CE?\nCzy ma certyfikat FCC?\nCzy jest zgodny z RoHS?\nCzy ma certyfikat ENERGY STAR?\nJakie normy IEEE obsługuje?\nCzy ma certyfikat Zigbee 3.0?\nCzy ma certyfikat Z-Wave Plus?\nCzy ma certyfikat Thread?\nCzy ma certyfikat Matter?\n\nFAQ z dokumentu\n\nCzy hub działa bez internetu?\nIle urządzeń można podłączyć?\nCzy można sterować hubem z kilku telefonów?\nCo zrobić przy przeprowadzce?\nCzy hub jest kompatybilny z HomeKit?",
+        "height": 1080,
+        "width": 424
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1136, 960],
+      "id": "6cfc2b1b-0b7c-46bc-94e6-9586835ce14a",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "## Import danych",
+        "height": 688,
+        "width": 828,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [0, 240],
+      "typeVersion": 1,
+      "id": "deb64bb1-4f39-424f-9aed-c934ef9b0675",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "formTitle": "Agent Wiedzy",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Wgraj plik",
+              "fieldType": "file",
+              "acceptFileTypes": ".pdf, .csv"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [80, 336],
+      "id": "355f9a9e-e96d-4718-a075-0c46b90c1c4a",
+      "name": "On form submission",
+      "webhookId": "d43b1c99-0839-420e-b8ac-d22c66e71e5f"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "baza-wiedzy",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [464, 336],
+      "id": "bef34d3f-03cb-4b99-8abd-125ed06708a0",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "D9crPTpamb5d5VvV",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [448, 544],
+      "id": "f767bbea-1dbe-45a8-8297-f5080fe6623b",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-large",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsAzureOpenAi",
+      "typeVersion": 1,
+      "position": [624, 544],
+      "id": "ede77996-e38c-462b-aef3-44cde169aa9a",
+      "name": "Embeddings Azure OpenAI",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "PIgc6Zg1uy8sXfzy",
+          "name": "Azure Open AI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Witaj, czy masz jakieś pytania dotyczące SmartHome Pro Hub?",
+        "options": {
+          "subtitle": "Jestem Twoim wirtualnym asystentem dostępnym 24/7!",
+          "title": "Witaj! 👋"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [976, 336],
+      "id": "c8d9eac1-ded1-4191-8a99-65f315705ef3",
+      "name": "When chat message received",
+      "webhookId": "9587a7b4-b448-4881-a2d2-7f4d62c2565b"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Jesteś asystentem obsługi klienta i odpowiadasz na pytania związane z produktem SmartHome Pro Hub, do którego wszystkie informacje są zawarte w załączonej bazie wiedzy. Przed odpowiedzią na pytanie zawsze sprawdzasz bazę wiedzy. Nie proponuj użytkownikowi zadawania kolejnych pytań i nie zachęcaj go - ogranicz się tylko do odpowiedzi. Odpowiadaj w sposób grzeczny. Jeśli użytkownik zapyta o coś innego niż produkt SmartHome Pro Hub, lub o całkiem inny temat, powiedz, że nie możesz udzielić odpowiedzi, bo to nie Twój zakres wiedzy."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [1168, 336],
+      "id": "a4847475-7afc-4efe-b11a-12ea7b603824",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [1424, 528],
+      "id": "61ada058-e718-4984-8133-6cad2118807c",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "PIgc6Zg1uy8sXfzy",
+          "name": "Azure Open AI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "whatever_v1",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [1600, 528],
+      "id": "0932d82c-2c32-49c8-85d6-c1b2509c1eb2",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "description": "Baza wiedzy, aby odpowiadać na pytania klientów dotyczące produktów."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [1424, 672],
+      "id": "a088a533-98a5-4dc7-846b-731340fb66d0",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "qdrantCollection": {
+          "__rl": true,
+          "mode": "id",
+          "value": "baza-wiedzy"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [1424, 800],
+      "id": "716b6966-3419-48dc-8f40-bc8e64ea69ce",
+      "name": "Qdrant Vector Store1",
+      "credentials": {
+        "qdrantApi": {
+          "id": "D9crPTpamb5d5VvV",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1UjeBkq9DbTXruXgup612ulWPDbavrW_d",
+          "mode": "list",
+          "cachedResultName": "Agent Wiedzy",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1UjeBkq9DbTXruXgup612ulWPDbavrW_d"
+        },
+        "event": "fileUpdated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [80, 528],
+      "id": "38136469-430f-4c7c-99f6-6f88f5be62ce",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "7khPEjoTOOgzk0PS",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.webViewLink }}",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [256, 528],
+      "id": "5a190524-7869-4680-b172-bfee0a5c7dd7",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "7khPEjoTOOgzk0PS",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Email Flow",
+        "height": 688,
+        "width": 832,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1536, 240],
+      "id": "d7e0bd3c-5bfb-4896-a0cd-9a6db8867dc6",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [1616, 336],
+      "id": "1d0fccb7-73d3-4c3b-b3b6-9a259b320f2d",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "37isXSKHVRAAnqbA",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Pytanie od klienta: {{ $json.snippet }}",
+        "options": {
+          "systemMessage": "Jesteś asystentem obsługi klienta i odpowiadasz na pytania związane z produktem SmartHome Pro Hub, do którego wszystkie informacje są zawarte w załączonej bazie wiedzy. Przed odpowiedzią na pytanie zawsze sprawdzasz bazę wiedzy. Nie pytaj czy użytkownik ma więcej pytań i nie zachęcaj do zadawania kolejnych - ogranicz się do odpowiadania na pytania."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [1808, 336],
+      "id": "68735b05-5d06-460f-b8af-a68503d16e45",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [2144, 336],
+      "id": "9e62e978-5c97-4076-beee-6fbcea90a5e9",
+      "name": "Reply to a message",
+      "webhookId": "e0483747-dc93-45ad-ab53-b84b1ffde31a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "37isXSKHVRAAnqbA",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Azure OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          },
+          {
+            "node": "Qdrant Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qdrant Vector Store1": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Reply to a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f6d2ded1-d5ad-4b36-93eb-13e5123ee400",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7ff714432bcf0fe088cbbcc7a61794a85f55df7a617424f726e90aa182158360"
+  },
+  "id": "9AXaS5rsbLOdhHJ1",
+  "tags": [
+    {
+      "createdAt": "2025-07-16T09:00:58.733Z",
+      "updatedAt": "2025-07-16T09:00:58.733Z",
+      "id": "r10QjxA473Hnv1Uz",
+      "name": "personal"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "name": "Agent Animal Recognition",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c30c62ee-7f2e-435c-972c-2873603e0226",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [32, 0],
+      "id": "4e057664-1d98-43af-b075-1ccad17db171",
+      "name": "Webhook",
+      "webhookId": "c30c62ee-7f2e-435c-972c-2873603e0226"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Jakie to zwierzę?\n{{ $input.first().binary.image; }}\nAlways translate to pl-PL. W odpowiedzi podaj tylko nazwę zwierzęcia. Jeśli możesz, wskaż dokładną rasę. Dodaj krótki opis.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Jesteś profesjonalnym przyrodnikiem i znawcą zwierząt. Na podstawie przesłanego obrazu, jesteś w stanie określić dokładnie jakie to zwierzę. Na zdjęciu są tylko zwierzęta aktualnie istniejące. Translate to pl-PL. Bez znaków specjalnych."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [224, 0],
+      "id": "bc2ffc71-0487-4c95-9526-bebbf23c9831",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [544, 0],
+      "id": "dcbf2afc-54e2-4334-b787-f076ccff76a5",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"name\": \"\",\n  \"description\": \"\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [384, 224],
+      "id": "5c2b350b-ebb1-44e5-85bf-1dc30115e094",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "content": "## Agent Rozpoznawania Zwierzęcia",
+        "height": 448,
+        "width": 800
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-48, -64],
+      "id": "6357d47d-bccd-4b12-9cd0-7c06c58cdb28",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [176, 208],
+      "id": "9aac6032-aa1f-4e25-8679-19fb9e1cbcc3",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "zuFKWstsYcse1aya",
+          "name": "Google Gemini Api Paid"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "066b7cd0-b886-41e1-8b27-f3a240ce6831",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7ff714432bcf0fe088cbbcc7a61794a85f55df7a617424f726e90aa182158360"
+  },
+  "id": "mYqZClfoMvCgw6ve",
+  "tags": [
+    {
+      "createdAt": "2025-07-16T09:08:01.943Z",
+      "updatedAt": "2025-07-16T09:08:01.943Z",
+      "id": "U2sKKN9OnS1o0mdx",
+      "name": "personal"
+    }
+  ]
+}

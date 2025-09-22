@@ -1,0 +1,950 @@
+{
+  "name": "Agent Biurowy",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Gmail",
+        "height": 400,
+        "width": 460,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1440, 448],
+      "id": "68bf531a-d5fe-4266-bb22-53d42830a29e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Kalendarz",
+        "height": 400,
+        "width": 460
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [992, 448],
+      "id": "fa84d206-0391-45fd-9c8b-9b34e55cce0e",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Chat - Agent - Model - Pamięć",
+        "height": 440,
+        "width": 920,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [992, 0],
+      "id": "3078d19f-addb-49b9-a4a3-e3c6771bcf13",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Dokumenty",
+        "height": 400,
+        "width": 460,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1904, 448],
+      "id": "3f5248da-84f7-4363-a640-434bca99f07b",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Arkusz",
+        "height": 440,
+        "width": 460,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1904, 0],
+      "id": "a29db51a-d313-439b-846a-e35e0cce1329",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Witaj! 👋\nJestem Twoim wirtualnym asystentem. Jak mogę Ci dziś pomóc?",
+        "options": {
+          "subtitle": "Rozpocznij czat. Jestem tutaj 24/7.",
+          "title": "Agent Biurowy"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [1152, 64],
+      "id": "50950717-69ee-4d1d-82f7-ec5a283cb084",
+      "name": "When chat message received",
+      "webhookId": "8b0b0d88-a6d0-47da-a6ce-c24efd726236"
+    },
+    {
+      "parameters": {
+        "model": "o4-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [1168, 272],
+      "id": "12b5e10c-f40a-4847-949a-5ee3b5749936",
+      "name": "Azure OpenAI Chat Model",
+      "credentials": {
+        "azureOpenAiApi": {
+          "id": "PIgc6Zg1uy8sXfzy",
+          "name": "Azure Open AI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 30
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [1328, 272],
+      "id": "596da7ac-2e13-45ed-bfe0-a0c0714e7be1",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=Jesteś wirtualnym asystentem do pomocy w biurze. Dzisiaj jest {{$now}}\nZadania wykonuj na moje polecenie. \n\nJednym z twoich zadań jest sprawdzanie mojej poczty e-mial.\nJako tytuł spotkania w kalendarzu dodaj e-mail osoby, która go wysłała oraz jej imię i nazwisko w takim formaci:\nJan Kowalski - example@youremail.com\n\n###\nKroki do wykonania przez Ciebie, jeżeli poproszę Cię o dodanie spotkań z wiadomosci e-mail:\n- sprawdź w kalendarzu czy mam wolny termin na ten moment. Jeżeli nie mam nie wykonuj dalszych kroków tylko zaproponuj inny termin lub kilka. Oraz zapytaj czy chcę samemu zaproponować termin. \n- dodaj wydarzenie do kalendarza\n- zaktualizuj wydarzenie o gościa, którym jest osoba wysyłająca wiadomość e-mail \n- Odpowiedz na wiadomość e-mail z potwierdzeniem do osoby, która ją wysłała\n- dodaj zadanie do arkusza google. \n\nDo opisu dodaj istotne informacje dotyczące tego na jaki temat ma być spotkanie oraz dane tej osoby.\nJeżeli tworzysz szkic wiadomości to do odpowiedzi na wiaodmość osoby od której ją dostałem.\nJeżeli nie wykonasz zadania szukaj rozwiązania i zaproponuj. Napotykając przeszkodę szukaj możliwości skorzystania z innych narzędzi. \n\n###\nJeżeli proszę Cię o sprawdzenie wiadomości i przygotowanie dokumentu w google stwórz dokument i dodaj do niego zadania.\nSprawdzając pocztę szukasz tylko wiadomości związanych z pracą. \n\n###\nWiadomości e-mail z odpowiedzią formatuj w takim stylu podzielona na akapity:\n\nDzień dobry,\ndziękuję za wiadomość.\n[Tutaj dodaj treść wiadomości]\nPozdrawiam, Piotr\n\n###\nWiadomości od ... są priorytetem\n\n###\nJako odpowiedź zwróć teksty, które dodałeś do poszczególnych zadań\n\n###\n\n\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [1520, 64],
+      "id": "a3289ae9-4e86-484f-b6d9-61c980e52228",
+      "name": "Google get event"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "ppachol87@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ppachol87@gmail.com"
+        },
+        "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+        "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+        "additionalFields": {
+          "attendees": [],
+          "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [1024, 512],
+      "id": "5723f930-0d37-47a2-9caf-d6bdb4dac598",
+      "name": "K - dodaj",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "1zMPOfXrmIjT4hmB",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "ppachol87@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ppachol87@gmail.com"
+        },
+        "eventId": "={{ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [1168, 512],
+      "id": "af2b8970-fffb-43ed-898c-6fc8178a5a29",
+      "name": "K - skasuj event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "1zMPOfXrmIjT4hmB",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "ppachol87@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ppachol87@gmail.com"
+        },
+        "timeMin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('After', ``, 'string') }}",
+        "timeMax": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Before', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [1328, 512],
+      "id": "86674346-f60a-4a1d-b1d9-45cc7eefeb5b",
+      "name": "K - pobierz wiele",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "1zMPOfXrmIjT4hmB",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "calendar": {
+          "__rl": true,
+          "value": "ppachol87@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ppachol87@gmail.com"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [1024, 688],
+      "id": "10ab2758-503b-4438-abae-d7b6c3ec4781",
+      "name": "K - pobierz jeden",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "1zMPOfXrmIjT4hmB",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "ppachol87@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ppachol87@gmail.com"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "updateFields": {
+          "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [1168, 688],
+      "id": "e08ab446-0787-40fa-9208-85a7f43674f7",
+      "name": "K - zaktualizuj opis",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "1zMPOfXrmIjT4hmB",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "ppachol87@gmail.com",
+          "mode": "list",
+          "cachedResultName": "ppachol87@gmail.com"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "updateFields": {
+          "attendeesUi": {
+            "values": {
+              "attendees": [
+                "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('attendees0_Attendees', ``, 'string') }}"
+              ]
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [1328, 688],
+      "id": "7293f8e9-8bff-478f-bddc-53161e58d574",
+      "name": "K - zaktualizuj gosci",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "1zMPOfXrmIjT4hmB",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "messageId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message_ID', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [1520, 688],
+      "id": "9b73c139-65da-454d-9263-989a31b35523",
+      "name": "M - skasuj",
+      "webhookId": "39fef960-ef37-4b49-9a17-c2f8bb1913b3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "37isXSKHVRAAnqbA",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message_ID', ``, 'string') }}",
+        "emailType": "text",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [1520, 512],
+      "id": "076492f6-bb63-4df9-ba5a-f69c0de02f3d",
+      "name": "M - odpowiedz",
+      "webhookId": "10d90dd0-62d5-4afd-a3c4-7720f119109f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "37isXSKHVRAAnqbA",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [1680, 512],
+      "id": "b76014d9-cc2c-4749-b8d3-f224c67770de",
+      "name": "M -  sprawdz poczte",
+      "webhookId": "a16e751a-df1e-483c-987a-71578f7366a2",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "37isXSKHVRAAnqbA",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {
+          "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Email', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [1680, 688],
+      "id": "f4947607-697a-4c4f-b356-ed49a12cf7ce",
+      "name": "M - szkic",
+      "webhookId": "e659b23c-40b9-445f-afb5-c5ada0ac0827",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "37isXSKHVRAAnqbA",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU",
+          "mode": "list",
+          "cachedResultName": "Agent biurowy",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Arkusz1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU/edit#gid=0"
+        },
+        "startIndex": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start_Row_Number', ``, 'number') }}",
+        "numberToDelete": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Number_of_Rows_to_Delete', ``, 'number') }}"
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [1984, 240],
+      "id": "35cb404e-7d4e-4fef-b9ea-0d9739b89dba",
+      "name": "A - skasuj",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lDjmDX7pbPXy4ZkI",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU",
+          "mode": "list",
+          "cachedResultName": "Agent biurowy",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Arkusz1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [2208, 240],
+      "id": "efcc91f3-94b3-4b41-b802-f26598a51fcf",
+      "name": "A - sprawdz",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lDjmDX7pbPXy4ZkI",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "={{ $fromAI('1UHAOJZFWOhdD8rvJGzCr5OTK7RpaIbJgLolzkH_R8eY', ``, 'string') }}\n"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [1984, 528],
+      "id": "bb4849aa-c9ae-45b0-860e-6c4d8e8b07cf",
+      "name": "D - sprawdz",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "oNAPCTSDNzzdD1a6",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Doc_ID_or_URL', ``, 'string') }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('actionFields0_Text', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [1984, 688],
+      "id": "1942e432-1bf7-43d9-a636-402ec010cff5",
+      "name": "D - zaktualizuj",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "oNAPCTSDNzzdD1a6",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "folderId": "1J5--9uezyhArLOQIM3XL8V1j_mxJF-23",
+        "title": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Title', ``, 'string') }}"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [2208, 528],
+      "id": "682e6c01-c5dd-4943-bb7e-d40794c1d3cc",
+      "name": "D - dodaj",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "oNAPCTSDNzzdD1a6",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU",
+          "mode": "list",
+          "cachedResultName": "Agent biurowy",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Arkusz1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Zadanie": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Zadanie', ``, 'string') }}",
+            "TO-DO": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('TO-DO', `Pole te ma dwie funkcje do zrobienia w kolumnie todo i zrobione w kolumnie done. Jeżeli dostajesz instrukcję żeby stworzyć zadanie to dodajesz tylko do kolumnu todo, a jak chcę żeby zaznaczyć, że zostało zakończone to dodajesz do kolumny done, a kasujesz z kolumny do zrobienia.\nJeżeli zadanie jest do zrobienia dodajesz \"do zrobienia\" jeżeli zostało zrobione dodajesz \"zrobione\"`, 'string') }}",
+            "Done": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Done', `Pole te ma dwie funkcje do zrobienia w kolumnie todo i zrobione w kolumnie done. Jeżeli dostajesz instrukcję żeby stworzyć zadanie to dodajesz tylko do kolumnu todo, a jak chcę żeby zaznaczyć, że zostało zakończone to dodajesz do kolumny done, a kasujesz z kolumny do zrobienia.\nJeżeli zadanie jest do zrobienia dodajesz \"do zrobienia\" jeżeli zostało zrobione dodajesz \"zrobione\"`, 'string') }}",
+            "Start zadania": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start_zadania', ``, 'string') }}",
+            "Koniec zadania": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Koniec_zadania', ``, 'string') }}",
+            "Czas spędzony nad zadaniem ": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Czas_sp_dzony_nad_zadaniem_', `Oblicz czas pomiędzy dodaniem zadania, a jego wykonaniem w minutach `, 'string') }}"
+          },
+          "matchingColumns": ["Test"],
+          "schema": [
+            {
+              "id": "Zadanie",
+              "displayName": "Zadanie",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "TO-DO",
+              "displayName": "TO-DO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Done",
+              "displayName": "Done",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Start zadania",
+              "displayName": "Start zadania",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Koniec zadania",
+              "displayName": "Koniec zadania",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Czas spędzony nad zadaniem ",
+              "displayName": "Czas spędzony nad zadaniem ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [2208, 64],
+      "id": "3f826bd1-3f62-4544-8b8a-b344d29a84a5",
+      "name": "A -  dodaj wiersz",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lDjmDX7pbPXy4ZkI",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU",
+          "mode": "list",
+          "cachedResultName": "Agent biurowy",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Arkusz1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WaWMNchpBwjXQu0fmm21NMV7mTQRIb_l1hvBaKoWZFU/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Zadanie": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Zadanie__using_to_match_', ``, 'string') }}",
+            "TO-DO": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('TO-DO', `Pole te ma dwie funkcje do zrobienia w kolumnie todo i zrobione w kolumnie done. Jeżeli dostajesz instrukcję żeby stworzyć zadanie to dodajesz tylko do kolumnu todo, a jak chcę żeby zaznaczyć, że zostało zakończone to dodajesz do kolumny done, a kasujesz z kolumny do zrobienia.\nJeżeli zadanie jest do zrobienia dodajesz \"do zrobienia\" jeżeli zostało zrobione dodajesz \"zrobione\"`, 'string') }}",
+            "Done": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Done', `Pole te ma dwie funkcje do zrobienia w kolumnie todo i zrobione w kolumnie done. Jeżeli dostajesz instrukcję żeby stworzyć zadanie to dodajesz tylko do kolumnu todo, a jak chcę żeby zaznaczyć, że zostało zakończone to dodajesz do kolumny done, a kasujesz z kolumny do zrobienia.\nJeżeli zadanie jest do zrobienia dodajesz \"do zrobienia\" jeżeli zostało zrobione dodajesz \"zrobione\"`, 'string') }}",
+            "Start zadania": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start_zadania', ``, 'string') }}",
+            "Koniec zadania": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Koniec_zadania', ``, 'string') }}",
+            "Czas spędzony nad zadaniem ": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Czas_sp_dzony_nad_zadaniem_', `Oblicz czas pomiędzy dodaniem zadania, a jego wykonaniem w minutach `, 'string') }}"
+          },
+          "matchingColumns": ["Zadanie"],
+          "schema": [
+            {
+              "id": "Zadanie",
+              "displayName": "Zadanie",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "TO-DO",
+              "displayName": "TO-DO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Done",
+              "displayName": "Done",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Start zadania",
+              "displayName": "Start zadania",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Koniec zadania",
+              "displayName": "Koniec zadania",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Czas spędzony nad zadaniem ",
+              "displayName": "Czas spędzony nad zadaniem ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [1984, 64],
+      "id": "642159f0-440e-4a38-9191-8a0b0cce7419",
+      "name": "A - zaktualizuj",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lDjmDX7pbPXy4ZkI",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Google get event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Azure OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "K - dodaj": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "K - skasuj event": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "K - pobierz wiele": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "K - pobierz jeden": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "K - zaktualizuj opis": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "K - zaktualizuj gosci": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "M - skasuj": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "M - odpowiedz": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "M -  sprawdz poczte": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "M - szkic": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "A - skasuj": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "A - sprawdz": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "D - sprawdz": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "D - zaktualizuj": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "D - dodaj": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "A -  dodaj wiersz": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "A - zaktualizuj": {
+      "ai_tool": [
+        [
+          {
+            "node": "Google get event",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d868d9cd-d3a1-4cef-bbc2-7b70b038f190",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7ff714432bcf0fe088cbbcc7a61794a85f55df7a617424f726e90aa182158360"
+  },
+  "id": "XrHnWc2f6WWuMGit",
+  "tags": [
+    {
+      "createdAt": "2025-07-16T09:08:01.943Z",
+      "updatedAt": "2025-07-16T09:08:01.943Z",
+      "id": "U2sKKN9OnS1o0mdx",
+      "name": "personal"
+    }
+  ]
+}
